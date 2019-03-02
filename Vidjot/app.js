@@ -17,7 +17,7 @@ app.engine('handlebars',exphbs({
 app.set('view engine', 'handlebars');
 //Index route
 app.get('/',(req,res) =>{
-    const title = 'Hello World';
+    const title = 'Home';
     res.render("index",{
         title: title
     });

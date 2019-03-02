@@ -2,9 +2,17 @@ const express = require('express');
 
 const app = express();
 
+//how middleware works
+app.use(function(req,res,next){
+    // console.log(Date.now());
+    req.name="Chris";
+    next();
+})
+
 //Index route
 app.get('/',(req,res) =>{
-    res.send("Index");
+    console.log(req.name)
+    res.send("index");
 })
 
 //About

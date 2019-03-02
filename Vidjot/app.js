@@ -62,7 +62,16 @@ app.post('/ideas', (req, res) =>{
       details: req.body.details
     })
   }else{
-    res.send('passed');
+    const newUser = {
+      title: req.body.title,
+      details: req.body.details
+    }
+    //Idea schema. saved items go in the parenthesis.
+    new Idea(newUser)
+      .save()
+      .then(idea =>{
+        res.redirect('/idea');
+      })
   }
 })
 

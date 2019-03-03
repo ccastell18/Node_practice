@@ -40,6 +40,19 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
+//GET ideas index
+app.get('/ideas', (req, res) => {
+  //leaving empty {} finds all
+  Idea.find({})
+  .sort({date: 'desc'})
+  .then(ideas =>{
+    res.render('ideas/index', {
+      ideas: ideas
+    })
+  })
+  
+})
+
 //Add Idea route
 app.get('/ideas/add', (req, res) =>{
   res.render('ideas/add');
@@ -70,7 +83,7 @@ app.post('/ideas', (req, res) =>{
     new Idea(newUser)
       .save()
       .then(idea =>{
-        res.redirect('/idea');
+        res.redirect('/ideas');
       })
   }
 })

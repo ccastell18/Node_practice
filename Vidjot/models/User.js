@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //create schema
 
-const IdeaSchema = new Schema({
+const UserSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -22,4 +22,4 @@ const IdeaSchema = new Schema({
     }
 })
 
-mongoose.model('ideas', IdeaSchema);
+mongoose.model('users', UserSchema);

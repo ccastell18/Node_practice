@@ -23,7 +23,7 @@ router.post('/login', (req,res, next) =>{
   //local refers to passport local
   passport.authenticate('local', {
     successRedirect: '/ideas',
-    failureRedirect: '/login',
+    failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
 })

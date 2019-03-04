@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
   <div class="container">
     <a class="navbar-brand" href="/">VidJot</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -23,8 +23,11 @@
             <a href="/ideas/add" class="dropdown-item">Add Ideas</a>
           </div>
         </li>
+         <li class="navbar-item">
+          <a href="/users/logout" class="nav-link">Logout</a>
+        </li>
         {{else}}
-          <li class="navbar-item">
+        <li class="navbar-item">
           <a href="/users/login" class="nav-link">Login</a>
         </li>
         <li class="navbar-item">

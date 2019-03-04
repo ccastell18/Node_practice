@@ -11,7 +11,7 @@ const { ensureAuthenticated} = require('../helpers/auth');
   //GET ideas index
   router.get('/',ensureAuthenticated, (req, res) => {
     //leaving empty {} finds all
-    Idea.find({})
+    Idea.find({user: req.user.id})
     .sort({date: 'desc'})
     .then(ideas =>{
       res.render('ideas/index', {
@@ -32,9 +32,14 @@ const { ensureAuthenticated} = require('../helpers/auth');
       _id: req.params.id
     })
     .then(idea => {
+      if(idea.user != req.user.id){
+        req.flash('error_msg', 'Not authorized')
+        res.redirect('/ideas');
+      }else{
       res.render( 'ideas/edit', {
         idea: idea
       })
+    }
     })
   })
   
@@ -58,7 +63,8 @@ const { ensureAuthenticated} = require('../helpers/auth');
     }else{
       const newUser = {
         title: req.body.title,
-        details: req.body.details
+        details: req.body.details,
+        user: req.user.id
       }
       //Idea schema. saved items go in the parenthesis.
       new Idea(newUser)

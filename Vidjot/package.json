@@ -4,8 +4,7 @@
   "description": "video notes",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "start": "node app.js"
   },
   "author": "Chris",
   "license": "ISC",

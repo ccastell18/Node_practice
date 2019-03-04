@@ -17,11 +17,14 @@ const users = require('./routes/users');
 //passport config
 require('./config/passport')(passport)
 
+//db config
+const db = require('./config/datbase');
+
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 
 // Connect to mongoose
-mongoose.connect('mongodb://localhost/vidjot-dev',
+mongoose.connect(db.mongoURI,
 { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
@@ -87,7 +90,7 @@ app.use('/users', users);
 
 
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () =>{
   console.log(`Server started on port ${port}`);
